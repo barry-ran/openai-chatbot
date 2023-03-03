@@ -55,7 +55,7 @@ if 'cur_input' not in st.session_state:
 # 开始布局UI
 st.title("🤖 chatBot : openAI GPT-3 + Streamlit")
 
-openai.api_key = st.text_input("输入 openai api key: ","")    
+openai.api_key = st.text_input("input openai api key: ","")    
 
 # streamlit是顺序执行过程边执行边显示
 # 代码逻辑肯定是先执行recv获取用户输入，再执行show显示结果，这样就先显示recv再显示show
@@ -71,7 +71,7 @@ with recv_container:
         st.session_state.input = " "
     
     # 只有第一次运行返回默认值，后面的运行返回用户输入的内容
-    st.text_input("输入区域: ", "", key="input", on_change=input_update)    
+    st.text_input("input your question: ", "", key="input", on_change=input_update)
 
 print("cur_input: ", st.session_state['cur_input'])
 
