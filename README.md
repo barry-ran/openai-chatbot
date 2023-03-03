@@ -1,12 +1,14 @@
 # openai-chatbot
 chatbot by openai and streamlit
 
+[online](https://barry-ran-openai-chatbot-app-vuymti.streamlit.app/)
+
 # 运行
-- 安装编译环境
+- install env
 ```
 pip install -r requirements.txt
 ```
-- 启动
+- start
 ```
 streamlit app.py
 ```
