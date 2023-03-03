@@ -11,7 +11,7 @@ def generate_response(prompt):
     completions = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=prompt,
-        max_tokens=4096,
+        max_tokens=256,
         stop=None,
         temperature=0.7,
     )
