@@ -8,11 +8,13 @@ from streamlit_chat import message
 # openai api
 #openai.api_key = st.secrets['api_secret']
 def generate_response(prompt):
+    pre_prompt = [        
+        {"role": "system", "content": "You are a helpful assistant."}
+    ]
+    pre_prompt.extend(prompt)
     completions = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
-        messages=prompt,
-        # max_tokens=256,
-        stop=None,
+        messages=pre_prompt,
         temperature=0.7,
     )
     
@@ -45,9 +47,7 @@ if 'user' not in st.session_state:
     st.session_state['user'] = []
 
 if 'chat_history' not in st.session_state:
-    st.session_state['chat_history'] = [
-        {"role": "system", "content": "You are a helpful assistant."}
-    ]
+    st.session_state['chat_history'] = []
 
 if 'cur_input' not in st.session_state:
     st.session_state['cur_input'] = ""
@@ -89,8 +89,8 @@ if st.session_state.cur_input:
     st.session_state.chat_history.append({"role": "user", "content": st.session_state.cur_input})
     st.session_state.chat_history.append({"role": "assistant", "content": output})
 
-    if len(st.session_state.chat_history) > 20:
-        st.session_state.chat_history = st.session_state.chat_history[-20:]
+    if len(st.session_state.chat_history) > 10:
+        st.session_state.chat_history = st.session_state.chat_history[-10:]
     
     st.session_state['cur_input'] = ""
 
