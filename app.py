@@ -60,6 +60,7 @@ openai.api_key = st.text_input("input openai api key: ","")
 # streamlit是顺序执行过程边执行边显示
 # 代码逻辑肯定是先执行recv获取用户输入，再执行show显示结果，这样就先显示recv再显示show
 # 但是我想show显示在上面，recv显示在下面，所以要用container来实现行布局，调整recv和show的顺序
+# 补充：使用st.empty()占位也可以实现乱序插入元素的效果 https://docs.streamlit.io/knowledge-base/using-streamlit/insert-elements-out-of-order
 show_container = st.container()
 recv_container = st.container()
 
